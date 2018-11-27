@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miojo", "Miojo\Miojo.csproj", "{1AEAD59E-D43C-4CA7-A0CF-D968BD52688F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiojoTeste", "MiojoTeste\MiojoTeste.csproj", "{A307FE3E-D2D3-49BD-81C9-41A37A48BCB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1AEAD59E-D43C-4CA7-A0CF-D968BD52688F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AEAD59E-D43C-4CA7-A0CF-D968BD52688F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AEAD59E-D43C-4CA7-A0CF-D968BD52688F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A307FE3E-D2D3-49BD-81C9-41A37A48BCB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A307FE3E-D2D3-49BD-81C9-41A37A48BCB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A307FE3E-D2D3-49BD-81C9-41A37A48BCB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A307FE3E-D2D3-49BD-81C9-41A37A48BCB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
