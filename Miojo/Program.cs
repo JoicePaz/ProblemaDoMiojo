@@ -17,9 +17,6 @@ namespace Miojo
             int tempoCozimento;
             int tempoGasto = 0;
             int duracao;
-            int numero;
-
-            bool flag = false;
 
             Console.WriteLine("Digite o tempo gasto para o cozimento do miojo");
             tempoCozimento = Int32.Parse(Console.ReadLine());
@@ -94,7 +91,6 @@ namespace Miojo
         {
             if (a1 < tempoCozimento || a2 < tempoCozimento)
             {
-                Console.Clear();
                 Console.WriteLine("Por favor, os valores de ambas ampulhetas deve ser maior que o tempo de cozimento do miojo.");
                 Thread.Sleep(2000);
 
