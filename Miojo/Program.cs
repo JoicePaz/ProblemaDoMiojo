@@ -33,35 +33,17 @@ namespace Miojo
             duracao = Int32.Parse(Console.ReadLine());
             ampulheta2 = new Ampulheta(duracao);
 
-
-            if (ampulheta1.duracao < miojo.tempoCozimento || ampulheta2.duracao < miojo.tempoCozimento)
-            {
-                Console.Clear();
-                Console.WriteLine("Por favor, os valores de ambas ampulhetas deve ser maior que o tempo de cozimento do miojo.");
-                Thread.Sleep(2000);
-
-                return;
-            }
-
-            if (miojo.tempoCozimento <= 0)
-            {
-                Console.WriteLine("Por favor, o tempo de cozimento não pode ser menor ou igual a zero.");
-                Thread.Sleep(2000);
-
-                return;
-            }
-
-            numero = Mdc(ampulheta1.duracao, ampulheta2.duracao);
-
-            if ((tempoCozimento % numero) == 0)
-                flag = true;
             
-            if (flag)
+            if (isValorAmpulhetasCorreto(ampulheta1.duracao, ampulheta2.duracao, miojo.tempoCozimento) 
+                &&
+                isTempoCozimentoCorreto(miojo.tempoCozimento)
+                && 
+                isPossivelCozinharOMiojo(ampulheta1.duracao, ampulheta2.duracao, miojo.tempoCozimento))
             {
                 tempoAmpulheta1 = ampulheta1.duracao;
                 tempoAmpulheta2 = ampulheta2.duracao;
 
-                while (flag)
+                while (true)
                 {
                     if (tempoAmpulheta2 < tempoAmpulheta1)
                     {
@@ -106,6 +88,42 @@ namespace Miojo
                 return a2;
             else
                 return Mdc(a2, (a1 % a2));
+        }
+
+        private static bool isValorAmpulhetasCorreto(int a1, int a2, int tempoCozimento)
+        {
+            if (a1 < tempoCozimento || a2 < tempoCozimento)
+            {
+                Console.Clear();
+                Console.WriteLine("Por favor, os valores de ambas ampulhetas deve ser maior que o tempo de cozimento do miojo.");
+                Thread.Sleep(2000);
+
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool isTempoCozimentoCorreto(int tempoCozimento)
+        {
+            if (tempoCozimento <= 0)
+            {
+                Console.WriteLine("Por favor, o tempo de cozimento não pode ser menor ou igual a zero.");
+                Thread.Sleep(2000);
+
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool isPossivelCozinharOMiojo(int a1Duracao, int a2Duracao, int tempoCozimento)
+        {
+            int numero = Mdc(a1Duracao, a2Duracao);
+
+            if ((tempoCozimento % numero) == 0)
+                return true;
+            return false;
         }
     }
 
