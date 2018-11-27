@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Miojo
 {
@@ -75,13 +76,13 @@ namespace Miojo
 
                 }
 
-                Console.WriteLine("O tempo mínimo para o miojo ser cozido é de: {0}", tempoGasto);
-                tempoCozimento = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("O tempo mínimo para o miojo ser cozido é de: {0} minuto(s)", tempoGasto);
+                Thread.Sleep(2000);
             }
             else
             {
                 Console.WriteLine("As ampulhetas disponíveis não permitem o cozimento do miojo");
-                tempoCozimento = Int32.Parse(Console.ReadLine());
+                Thread.Sleep(2000);
             }
 
         }
