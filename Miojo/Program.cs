@@ -7,14 +7,16 @@ namespace Miojo
     {
         static void Main(string[] args)
         {
-            Miojo miojo;
+
             Ampulheta ampulheta1;
             Ampulheta ampulheta2;
-            int tempoCozimento;
+            Miojo miojo;
+
             int tempoAmpulheta1;
             int tempoAmpulheta2;
-            int duracao;
+            int tempoCozimento;
             int tempoGasto = 0;
+            int duracao;
             int numero;
 
             bool flag = false;
@@ -36,6 +38,15 @@ namespace Miojo
             {
                 Console.Clear();
                 Console.WriteLine("Por favor, os valores de ambas ampulhetas deve ser maior que o tempo de cozimento do miojo.");
+                Thread.Sleep(2000);
+
+                return;
+            }
+
+            if (miojo.tempoCozimento <= 0)
+            {
+                Console.WriteLine("Por favor, o tempo de cozimento não pode ser menor ou igual a zero.");
+                Thread.Sleep(2000);
 
                 return;
             }
@@ -45,7 +56,6 @@ namespace Miojo
             if ((tempoCozimento % numero) == 0)
                 flag = true;
             
-
             if (flag)
             {
                 tempoAmpulheta1 = ampulheta1.duracao;
