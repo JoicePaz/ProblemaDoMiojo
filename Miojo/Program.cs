@@ -68,12 +68,6 @@ namespace Miojo
                 Console.WriteLine("O tempo mínimo para o miojo ser cozido é de: {0} minuto(s)", tempoGasto);
                 Thread.Sleep(2000);
             }
-            else
-            {
-                Console.WriteLine("As ampulhetas disponíveis não permitem o cozimento do miojo");
-                Thread.Sleep(2000);
-            }
-
         }
 
         private static int Mdc(int a1Duracao, int a2Duracao)
@@ -119,6 +113,10 @@ namespace Miojo
 
             if ((tempoCozimento % numero) == 0)
                 return true;
+
+            Console.WriteLine("As ampulhetas disponíveis não permitem o cozimento do miojo");
+            Thread.Sleep(2000);
+
             return false;
         }
     }
