@@ -11,7 +11,19 @@ namespace Miojo
 
         public Miojo(int tempoCozimento)
         {
-            this.tempoCozimento = tempoCozimento;
+            if (IsTempoCozimentoCorreto(tempoCozimento))
+            {
+                this.tempoCozimento = tempoCozimento;
+            }
+            else
+            {
+                Console.WriteLine("Por favor, o tempo de cozimento não pode ser menor ou igual a zero.");
+            }
+        }
+
+        private static bool IsTempoCozimentoCorreto(int tempoCozimento)
+        {
+            return tempoCozimento > 0;
         }
     }
 }
