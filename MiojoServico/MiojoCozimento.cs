@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Miojo
+namespace MiojoServico
 {
     public class MiojoCozimento
     {
@@ -24,7 +24,7 @@ namespace Miojo
             bool valorAmpulhetasCorreto = IsValorAmpulhetasCorreto(_ampulheta1Duracao, _ampulheta2Duracao, _tempoCozimento);
             bool possivelCozinharOMiojo = IsPossivelCozinharOMiojo(_ampulheta1Duracao, _ampulheta2Duracao, _tempoCozimento);
 
-            if (valorAmpulhetasCorreto || possivelCozinharOMiojo)
+            if (valorAmpulhetasCorreto && possivelCozinharOMiojo)
             {
                 tempoAmpulheta1 = _ampulheta1Duracao;
                 tempoAmpulheta2 = _ampulheta2Duracao;
