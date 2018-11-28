@@ -25,5 +25,16 @@ namespace MiojoTeste
 
             Assert.AreEqual(tempoGasto, 0);
         }
+
+        [Test]
+        public void Deve_Retornar_Zero_Quando_Nao_For_Possivel_Cozinhar_O_Miojo()
+        {
+            MiojoCozimento miojoCozimento = new MiojoCozimento(7, 7, 2);
+
+            int tempoGasto = miojoCozimento.ObterTempoDeCozimento();
+
+            Assert.AreEqual(tempoGasto, 0);
+        }
+        
     }
 }
