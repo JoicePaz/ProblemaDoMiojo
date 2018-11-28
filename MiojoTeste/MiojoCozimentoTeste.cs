@@ -9,11 +9,11 @@ namespace MiojoTeste
         [Test]
         public void Devo_Conseguir_Cozer_Um_Miojo()
         {
-            MiojoCozimento miojoCozimento = new MiojoCozimento(11, 6, 5);
+            MiojoCozimento miojoCozimento = new MiojoCozimento(5, 7, 3); //ampulheta 1, ampulheta 2, tempo de cozimento
 
             int tempoGasto = miojoCozimento.ObterTempoDeCozimento();
 
-            Assert.AreEqual(tempoGasto, 11);
+            Assert.AreEqual(tempoGasto, 10);
         }
 
         [Test]
