@@ -96,10 +96,10 @@ namespace Miojo
             Console.Read(); //para manter o console aberto até que seja pressionado algo
         }
 
-        private static int Mdc(int a1Duracao, int a2Duracao)
+        private static int Mdc(int ampulheta1Duracao, int ampulheta2Duracao)
         {
-            int a1 = Math.Max(a1Duracao, a2Duracao);
-            int a2 = Math.Min(a1Duracao, a2Duracao);
+            int a1 = Math.Max(ampulheta1Duracao, ampulheta2Duracao);
+            int a2 = Math.Min(ampulheta1Duracao, ampulheta2Duracao);
 
             if (a1 % a2 == 0)
                 return a2;
