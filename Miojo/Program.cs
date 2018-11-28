@@ -7,10 +7,9 @@ namespace Miojo
     {
         static void Main(string[] args)
         {
-
-            Ampulheta ampulheta1;
-            Ampulheta ampulheta2;
-            Miojo miojo;
+            bool valorAmpulhetasCorreto;
+            bool tempoCozimentoCorreto;
+            bool possivelCozinharOMiojo;
 
             int tempoAmpulheta1;
             int tempoAmpulheta2;
@@ -18,9 +17,9 @@ namespace Miojo
             int tempoGasto = 0;
             int duracao;
 
-            bool valorAmpulhetasCorreto;
-            bool tempoCozimentoCorreto;
-            bool possivelCozinharOMiojo;
+            Ampulheta ampulheta1;
+            Ampulheta ampulheta2;
+            Miojo miojo;
 
             Console.WriteLine("Digite o tempo gasto para o cozimento do miojo");
             tempoCozimento = Int32.Parse(Console.ReadLine());
@@ -34,10 +33,9 @@ namespace Miojo
             duracao = Int32.Parse(Console.ReadLine());
             ampulheta2 = new Ampulheta(duracao);
 
-
-            valorAmpulhetasCorreto = isValorAmpulhetasCorreto(ampulheta1.duracao, ampulheta2.duracao, miojo.tempoCozimento);
-            tempoCozimentoCorreto = isTempoCozimentoCorreto(miojo.tempoCozimento);
-            possivelCozinharOMiojo = isPossivelCozinharOMiojo(ampulheta1.duracao, ampulheta2.duracao, miojo.tempoCozimento);
+            valorAmpulhetasCorreto = IsValorAmpulhetasCorreto(ampulheta1.duracao, ampulheta2.duracao, miojo.tempoCozimento);
+            possivelCozinharOMiojo = IsPossivelCozinharOMiojo(ampulheta1.duracao, ampulheta2.duracao, miojo.tempoCozimento);
+            tempoCozimentoCorreto = IsTempoCozimentoCorreto(miojo.tempoCozimento);
 
             Console.Clear();
 
@@ -96,6 +94,29 @@ namespace Miojo
             Console.Read(); //para manter o console aberto até que seja pressionado algo
         }
 
+        private static bool IsPossivelCozinharOMiojo(int a1Duracao, int a2Duracao, int tempoCozimento)
+        {
+            int numero = Mdc(a1Duracao, a2Duracao);
+
+            if ((tempoCozimento % numero) == 0)
+                return true;
+            return false;
+        }
+
+        private static bool IsValorAmpulhetasCorreto(int a1, int a2, int tempoCozimento)
+        {
+            if (a1 < tempoCozimento || a2 < tempoCozimento)
+                return false;
+            return true;
+        }
+
+        private static bool IsTempoCozimentoCorreto(int tempoCozimento)
+        {
+            if (tempoCozimento <= 0)
+                return false;
+            return true;
+        }
+
         private static int Mdc(int ampulheta1Duracao, int ampulheta2Duracao)
         {
             int a1 = Math.Max(ampulheta1Duracao, ampulheta2Duracao);
@@ -107,30 +128,6 @@ namespace Miojo
                 return Mdc(a2, (a1 % a2));
         }
 
-        private static bool isPossivelCozinharOMiojo(int a1Duracao, int a2Duracao, int tempoCozimento)
-        {
-            int numero = Mdc(a1Duracao, a2Duracao);
-
-            if ((tempoCozimento % numero) == 0)
-                return true;
-            return false;
-        }
-
-        private static bool isValorAmpulhetasCorreto(int a1, int a2, int tempoCozimento)
-        {
-            if (a1 < tempoCozimento || a2 < tempoCozimento)
-                return false;
-            return true;
-        }
-
-        private static bool isTempoCozimentoCorreto(int tempoCozimento)
-        {
-            if (tempoCozimento <= 0)
-                return false;
-            return true;
-        }
-
-       
     }
 
 }
