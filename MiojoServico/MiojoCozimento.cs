@@ -6,7 +6,7 @@ namespace MiojoServico
     {
         private readonly int _ampulheta1Duracao;
         private readonly int _ampulheta2Duracao;
-        private readonly int _tempoCozimento;
+        private readonly int _tempoCozimento; // feito dessa forma para remover a dependência que o código teria dos parâmetros
 
         public MiojoCozimento(int ampulheta1Duracao, int ampulheta2Duracao, int tempoCozimento)
         {
