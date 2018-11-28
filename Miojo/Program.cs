@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 
 namespace Miojo
 {
@@ -78,7 +77,6 @@ namespace Miojo
                     else
                     {
                         Console.WriteLine("As ampulhetas disponíveis não permitem o cozimento do miojo");
-
                     }
                 }
                 else
@@ -103,9 +101,9 @@ namespace Miojo
             return false;
         }
 
-        private static bool IsValorAmpulhetasCorreto(int a1, int a2, int tempoCozimento)
+        private static bool IsValorAmpulhetasCorreto(int a1Duracao, int a2Duracao, int tempoCozimento)
         {
-            if (a1 < tempoCozimento || a2 < tempoCozimento)
+            if (a1Duracao < tempoCozimento || a2Duracao < tempoCozimento)
                 return false;
             return true;
         }
@@ -117,10 +115,10 @@ namespace Miojo
             return true;
         }
 
-        private static int Mdc(int ampulheta1Duracao, int ampulheta2Duracao)
+        private static int Mdc(int a1Duracao, int a2Duracao)
         {
-            int a1 = Math.Max(ampulheta1Duracao, ampulheta2Duracao);
-            int a2 = Math.Min(ampulheta1Duracao, ampulheta2Duracao);
+            int a1 = Math.Max(a1Duracao, a2Duracao);
+            int a2 = Math.Min(a1Duracao, a2Duracao);
 
             if (a1 % a2 == 0)
                 return a2;
