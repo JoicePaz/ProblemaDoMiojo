@@ -18,6 +18,10 @@ namespace Miojo
             int tempoGasto = 0;
             int duracao;
 
+            bool valorAmpulhetasCorreto;
+            bool tempoCozimentoCorreto;
+            bool possivelCozinharOMiojo;
+
             Console.WriteLine("Digite o tempo gasto para o cozimento do miojo");
             tempoCozimento = Int32.Parse(Console.ReadLine());
             miojo = new Miojo(tempoCozimento);
@@ -30,42 +34,65 @@ namespace Miojo
             duracao = Int32.Parse(Console.ReadLine());
             ampulheta2 = new Ampulheta(duracao);
 
-            
-            if (isValorAmpulhetasCorreto(ampulheta1.duracao, ampulheta2.duracao, miojo.tempoCozimento) 
-                &&
-                isTempoCozimentoCorreto(miojo.tempoCozimento)
-                && 
-                isPossivelCozinharOMiojo(ampulheta1.duracao, ampulheta2.duracao, miojo.tempoCozimento))
+
+            valorAmpulhetasCorreto = isValorAmpulhetasCorreto(ampulheta1.duracao, ampulheta2.duracao, miojo.tempoCozimento);
+            tempoCozimentoCorreto = isTempoCozimentoCorreto(miojo.tempoCozimento);
+            possivelCozinharOMiojo = isPossivelCozinharOMiojo(ampulheta1.duracao, ampulheta2.duracao, miojo.tempoCozimento);
+
+            Console.Clear();
+
+            if (valorAmpulhetasCorreto)
             {
-                tempoAmpulheta1 = ampulheta1.duracao;
-                tempoAmpulheta2 = ampulheta2.duracao;
-
-                while (true)
+                if (tempoCozimentoCorreto)
                 {
-                    if (tempoAmpulheta2 < tempoAmpulheta1)
+                    if (possivelCozinharOMiojo)
                     {
-                        tempoGasto += tempoAmpulheta2;
-
-                        if (tempoAmpulheta2 == tempoCozimento)
-                            break;
-
-                        tempoAmpulheta1 = tempoAmpulheta1 - tempoAmpulheta2;
+                        tempoAmpulheta1 = ampulheta1.duracao;
                         tempoAmpulheta2 = ampulheta2.duracao;
+
+                        while (true)
+                        {
+                            if (tempoAmpulheta2 < tempoAmpulheta1)
+                            {
+                                tempoGasto += tempoAmpulheta2;
+
+                                if (tempoAmpulheta2 == tempoCozimento)
+                                    break;
+
+                                tempoAmpulheta1 = tempoAmpulheta1 - tempoAmpulheta2;
+                                tempoAmpulheta2 = ampulheta2.duracao;
+                            }
+                            else
+                            {
+                                tempoGasto += tempoAmpulheta1;
+
+                                if (tempoAmpulheta1 == tempoCozimento)
+                                    break;
+
+                                tempoAmpulheta2 = tempoAmpulheta2 - tempoAmpulheta1;
+                                tempoAmpulheta1 = ampulheta1.duracao;
+                            }
+
+                        }
+                        
+                        Console.WriteLine("O tempo mínimo para o miojo ser cozido é de: {0} minuto(s)", tempoGasto);
+                        Thread.Sleep(2000);
                     }
                     else
                     {
-                        tempoGasto += tempoAmpulheta1;
-
-                        if (tempoAmpulheta1 == tempoCozimento)
-                            break;
-
-                        tempoAmpulheta2 = tempoAmpulheta2 - tempoAmpulheta1;
-                        tempoAmpulheta1 = ampulheta1.duracao;
+                        Console.WriteLine("As ampulhetas disponíveis não permitem o cozimento do miojo");
+                        Thread.Sleep(2000);
                     }
-
                 }
-
-                Console.WriteLine("O tempo mínimo para o miojo ser cozido é de: {0} minuto(s)", tempoGasto);
+                else
+                {
+                    Console.WriteLine("Por favor, o tempo de cozimento não pode ser menor ou igual a zero.");
+                    Thread.Sleep(2000);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Por favor, os valores de ambas ampulhetas deve ser maior que o tempo de cozimento do miojo.");
                 Thread.Sleep(2000);
             }
         }
@@ -84,26 +111,14 @@ namespace Miojo
         private static bool isValorAmpulhetasCorreto(int a1, int a2, int tempoCozimento)
         {
             if (a1 < tempoCozimento || a2 < tempoCozimento)
-            {
-                Console.WriteLine("Por favor, os valores de ambas ampulhetas deve ser maior que o tempo de cozimento do miojo.");
-                Thread.Sleep(2000);
-
                 return false;
-            }
-
             return true;
         }
 
         private static bool isTempoCozimentoCorreto(int tempoCozimento)
         {
             if (tempoCozimento <= 0)
-            {
-                Console.WriteLine("Por favor, o tempo de cozimento não pode ser menor ou igual a zero.");
-                Thread.Sleep(2000);
-
                 return false;
-            }
-
             return true;
         }
 
@@ -113,10 +128,6 @@ namespace Miojo
 
             if ((tempoCozimento % numero) == 0)
                 return true;
-
-            Console.WriteLine("As ampulhetas disponíveis não permitem o cozimento do miojo");
-            Thread.Sleep(2000);
-
             return false;
         }
     }
