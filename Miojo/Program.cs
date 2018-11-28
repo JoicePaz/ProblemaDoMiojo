@@ -76,25 +76,24 @@ namespace Miojo
                         }
                         
                         Console.WriteLine("O tempo mínimo para o miojo ser cozido é de: {0} minuto(s)", tempoGasto);
-                        Thread.Sleep(2000);
                     }
                     else
                     {
                         Console.WriteLine("As ampulhetas disponíveis não permitem o cozimento do miojo");
-                        Thread.Sleep(2000);
+
                     }
                 }
                 else
                 {
                     Console.WriteLine("Por favor, o tempo de cozimento não pode ser menor ou igual a zero.");
-                    Thread.Sleep(2000);
                 }
             }
             else
             {
                 Console.WriteLine("Por favor, os valores de ambas ampulhetas deve ser maior que o tempo de cozimento do miojo.");
-                Thread.Sleep(2000);
             }
+
+            Console.Read(); //para manter o console aberto até que seja pressionado algo
         }
 
         private static int Mdc(int a1Duracao, int a2Duracao)
@@ -106,6 +105,15 @@ namespace Miojo
                 return a2;
             else
                 return Mdc(a2, (a1 % a2));
+        }
+
+        private static bool isPossivelCozinharOMiojo(int a1Duracao, int a2Duracao, int tempoCozimento)
+        {
+            int numero = Mdc(a1Duracao, a2Duracao);
+
+            if ((tempoCozimento % numero) == 0)
+                return true;
+            return false;
         }
 
         private static bool isValorAmpulhetasCorreto(int a1, int a2, int tempoCozimento)
@@ -122,14 +130,7 @@ namespace Miojo
             return true;
         }
 
-        private static bool isPossivelCozinharOMiojo(int a1Duracao, int a2Duracao, int tempoCozimento)
-        {
-            int numero = Mdc(a1Duracao, a2Duracao);
-
-            if ((tempoCozimento % numero) == 0)
-                return true;
-            return false;
-        }
+       
     }
 
 }
